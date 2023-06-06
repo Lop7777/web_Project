@@ -1,25 +1,24 @@
 const $$dice = document.querySelectorAll('#dice');
 const $$player1 = document.querySelectorAll('[player-01]');
 const $$player2 = document.querySelectorAll('[player-02]');
-const $$total = document.querySelectorAll('.total');
+const $$subtotal = document.querySelectorAll('.subtotal');
 const $$bonus = document.querySelectorAll('.bonus');
 
 let diceValue = [0, 0, 0, 0, 0]; // 주사위 5개 각 숫자 (굴릴 때마다 변화)
 let diceBool = [true, true, true, true, true]; // 주사위 고정 or 해제
 
-let player = [{1: NaN, 2: NaN, 3: NaN, 4: NaN, 5: NaN, 6: NaN},
+let playerboard = [{1: NaN, 2: NaN, 3: NaN, 4: NaN, 5: NaN, 6: NaN},
               {1: NaN, 2: NaN, 3: NaN, 4: NaN, 5: NaN, 6: NaN}]; // player 스코어 (!뒤에 7번, 8번... 추가하여 확장!)
-let board = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}; // 주사위 굴릴 때 숫자 임시 기록 (!playerscore과 동일 할 것!)
-let playerTotal = {1: 0, 2: 0}
+let tmpboard = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}; // 주사위 굴릴 때 숫자 임시 기록 (!playerscore과 동일 할 것!)
+let playerTotal = [{subtotal : 0, bonus : 0, total : 0}, {subtotal : 0, bonus : 0, total : 0}]
 
 let TURN = 0;
-
 let rollCount = 3; // 굴릴 수 있는 횟수
 
 document.querySelector('#roll').addEventListener('click', () => {
     if(rollCount == 0) return; // 3번 굴리면 무시
 
-    board = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}; // 점수 기록판 비움
+    tmpboard = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}; // 점수 기록판 비움
 
     for(let i = 0; i < 5; i++) { // 주사위 굴림
         if(diceBool[i]) { // diceBool 이 true로 활성화 되어 있을 때만 실행
@@ -29,19 +28,19 @@ document.querySelector('#roll').addEventListener('click', () => {
     }
 
     diceValue.forEach(value => { // 기록판 (Aces ~ Sixes) 까지 기록
-        board[value] += value; // 주사위 값이 기록된 배열 순회하며 값이 X인 경우 board.X에 가산
+        tmpboard[value] += value; // 주사위 값이 기록된 배열 순회하며 값이 X인 경우 board.X에 가산
     });
 
     //!!여기에 fourkind, fullhouse 등은 어떻게 처리할 지 작성하면 됨!!
 
     for(let j = 0; j < 6; j++) { // 표 숫자를 board 내부 값에 따라 변경
         if(TURN === 0) {
-            if (!isNaN(player[TURN][j + 1])) continue;
-            $$player1[j].innerHTML = board[j+1];
+            if (!isNaN(playerboard[TURN][j + 1])) continue;
+            $$player1[j].innerHTML = tmpboard[j+1];
         }
         else if (TURN === 1) {
-            if (!isNaN(player[TURN][j + 1])) continue;
-            $$player2[j].innerHTML = board[j+1];
+            if (!isNaN(playerboard[TURN][j + 1])) continue;
+            $$player2[j].innerHTML = tmpboard[j+1];
         }
     }
 
@@ -81,19 +80,21 @@ const Select = (element, index) => { // 표 선택 시 동작 (바로 밑 이벤
         
         document.querySelector(`.gameNumber${TURN + 1}`).style.backgroundColor = 'white';
 
-        player[TURN][index + 1] = board[index + 1]; // 스코어에 기록
+        playerboard[TURN][index + 1] = tmpboard[index + 1]; // 스코어에 기록
 
-        playerTotal[TURN + 1] = 0;
+        playerTotal[TURN].subtotal += tmpboard[index + 1]; // 최종 토탈에 가산
 
-        Object.entries(player[TURN]).forEach( value => {
-            if(isNaN(value)) return;
-            playerTotal[TURN + 1] += value;
-        });
+        $$subtotal[TURN].innerHTML = playerTotal[TURN].subtotal; // 서브토탈 부분 보이게
+
+        if(playerTotal[TURN].subtotal >= 63) {
+            playerTotal[TURN].bonus = 35;
+            $$bonus[TURN].innerHTML = 35;
+        }
 
         TURN += 1; // 턴 + 1
 
         // 만약 비어있다면 (예를 들어 TURN이 2일 때 player[2]은 없으니 undefine 일 것임) 실행
-        if(player[TURN] === undefined) TURN = 0;
+        if(playerboard[TURN] === undefined) TURN = 0;
 
         document.querySelector(`.gameNumber${TURN + 1}`).style.backgroundColor = 'rgba(69, 69, 255, 0.212)';     
 
