@@ -101,7 +101,7 @@ const Select = (element, index) => { // 표 선택 시 동작 (바로 밑 이벤
         $$dice.forEach((element, index) => {
             element.style.backgroundColor = 'white';
             diceBool[index] = true;
-            element.innerHTML = '1';
+            element.innerHTML = '';
         })
     }, {once : true});
 }
