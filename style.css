@@ -1,0 +1,110 @@
+h1 {
+    padding: 0px 10px;
+    margin: 15px 0px;
+  }
+  
+  form {
+    margin: 5px;
+  }
+  
+  form input{
+    width: 30px;
+    height: 30px;
+    font-size: 25px;
+    margin: 3px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 150px repeat(2, 80px);
+    font-size: 18px;
+    align-items: stretch;
+    grid-template-rows: repeat(9, 43px);
+    margin-bottom: 5px;
+  }
+  
+  .score-total {
+    grid-template-rows: 50px;
+  }
+  
+  .grid-container > div {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+  }
+  
+  .categories {
+    color: rgba(0, 0, 0, 1);
+  }
+  
+  .score {
+    justify-content: flex-end;
+    color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .active {
+    cursor: pointer;
+  }
+  
+  .confirmed {
+    color: black;
+    font-weight: bold;
+  }
+  
+  .gameNumber1 {
+    background-color: rgba(69, 69, 255, 0.212);
+  }
+
+  .total {
+    color: black;
+    font-weight: bold;
+  }
+  
+  .bonus {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+  }
+  
+  .description {
+    font-size: 16px;
+  }
+  
+  i {
+    margin-right: 5px;
+  }
+  
+  .description i {
+    margin-left: 5px;
+  }
+  
+  .gameNumber {
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #f8585b;
+    border: none;
+    color: #fff;
+    padding: 5px 7px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  #dice {
+    display: flex;
+    border: 1px solid black;
+    padding: 10px 20px 10px 20px;
+    margin: 0 10px 0 0px;
+    flex-direction: column;
+  }
+
+  .diceform {
+    display: flex;
+    flex-direction: row;
+  }

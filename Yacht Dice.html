@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Yacht Dice</title>
+</head>
+<body>
+    <div>
+        <h1>Yacht Dice</h1>
+    </div>
+    <div class="diceform">
+        <div id="dice">1</div>
+        <div id="dice">1</div>
+        <div id="dice">1</div>
+        <div id="dice">1</div>
+        <div id="dice">1</div>
+    </div>
+    <div class="grid-container score-lower">
+        <div class="categories">Player</div>
+        <div class="categories gameNumber1 confirmed">player #1</div>
+        <div class="categories gameNumber2 confirmed">player #2</div>
+        <div class="categories"><i class="fas fa-dice-one"></i>Aces</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><i class="fas fa-dice-two"></i>Deuces</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><i class="fas fa-dice-three"></i>Threes</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><i class="fas fa-dice-four"></i>Fours</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><i class="fas fa-dice-five"></i>Fives</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><i class="fas fa-dice-six"></i>Sixes</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories">Subtotal</div>
+        <div class="total"></div>
+        <div class="total"></div>
+        <div class="categories"><span>+35 Bonus</span></div>
+        <div class="bonus"></div>
+        <div class="bonus"></div>
+    </div>
+
+    <span class="description">Bonus if <i class="fas fa-dice-one"></i>-<i class="fas fa-dice-six"></i> are over 63 points</span>
+
+<div>
+    <button type="submit" data-next-game>Next Game</button>
+    <button type="submit" data-reset>Reset</button>
+</div>
+
+<button id = 'roll'>굴림</button>
+
+</body>
+
+
+<script src="yahtzee.js"></script>
+</html>
