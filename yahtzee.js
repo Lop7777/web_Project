@@ -135,6 +135,8 @@ const Select = (element, index) => {
         }
     
         e.target.style.backgroundColor = 'grey';
+        diceValue = [1, 1, 1, 1, 1];
+        setDice(diceContainer);
         diceValue = [0, 0, 0, 0, 0];
         rollCount = 3;
 
