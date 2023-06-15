@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Yacht Dice</title>
+</head>
+<body>
+    <div style="margin-left: 5em;">
+        <h1 style="white-space:nowrap;">Yacht Dice</h1>
+    </div>
+
+    <div class="dice-container"></div>
+    
+    <div class="diceform" style="display:none">
+        <div id="dice"></div>
+        <div id="dice"></div>
+        <div id="dice"></div>
+        <div id="dice"></div>
+        <div id="dice"></div>
+    </div>
+    <div>
+        <button id = 'roll'>ROLL</button>
+    </div>
+
+    <div class="grid-container up">
+        <div class="categories">Category</div>
+        <div class="categories gameNumber1 confirmed">player #1</div>
+        <div class="categories gameNumber2 confirmed">player #2</div>
+        <div class="categories">Aces</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories">Deuces</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories">Threes</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories">Fours</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories">Fives</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories">Sixes</div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories etc">Subtotal</div>
+        <div class="subtotal"></div>
+        <div class="subtotal"></div>
+        <div class="categories etc"><span>+35 Bonus</span></div>
+        <div class="bonus"></div>
+        <div class="bonus"></div>
+    </div>
+
+    <span class="description">Bonus if SubTotal is over 63 points</span>
+
+    <div  class="grid-container down">
+        <div class="categories"><span>Choice</span></div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><span>4 of a Kind</span></div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><span>Full House</span></div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><span>Small Straight</span></div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><span>Large Straight</span></div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories"><span>Yahtzee</span></div>
+        <div class="score" player-01></div>
+        <div class="score" player-02></div>
+        <div class="categories etc">Total</div>
+        <div class="total"></div>
+        <div class="total"></div>
+    </div>
+
+    <div id="modal" class="modal-overlay">
+        <div id="modal" class="modal-window">
+            <div id="modal" class="content">
+                <div>게임이 종료되었습니다.</div> 
+            <div id = "modal" class = "result">
+                    <div>
+                        <p id="value"></p>
+                    </div>
+            </div>
+            </div>
+        </div>
+        <div> 
+            <button id="restart">다시하기</button>
+            <button id="end">그만하기</button>
+        </div>
+    </div>
+
+    <script src="yahtzee.js"></script>
+</body>
